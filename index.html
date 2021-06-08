@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>reveal.js</title>
+    <title>Animating Vue with GSAP - J.D. Hillen</title>
 
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
@@ -19,8 +19,81 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+        <section>
+          <img src="images/intro.png" />
+        </section>
+
+        <section>
+          <h5>What is GSAP?</h5>
+          <p class="fragment">
+            The GreenSock Animation Platform, or GSAP, is a powerful Javascript animation library
+            that helps developers build out engaging and performant animations.
+          </p>
+        </section>
+
+        <section>
+          <h5>What can GSAP Animate?</h5>
+          <ul>
+            <li class="fragment">CSS Properties</li>
+            <li class="fragment">SVG</li>
+            <li class="fragment">canvas</li>
+            <li class="fragment">generic objects</li>
+            <li class="fragment">Whatever!</li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>Why GSAP over other animation libraries?</h5>
+          <ul>
+            <li class="fragment">Platform agnostic</li>
+            <li class="fragment">63kB minified bundle size</li>
+            <li class="fragment">20 times faster than jQuery</li>
+            <li class="fragment">
+              <a href="https://greensock.com/js/speed.html" target="_blank"
+                >Animation Library Speed Tests</a
+              >
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>Requirements</h5>
+          <ul>
+            <li class="fragment">Node.js 10x or higher</li>
+            <li class="fragment">yarn or npm</li>
+            <li class="fragment">Basic Javascript Knowledge</li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>Installation</h5>
+          <pre>
+            <code data-trim data-noescape>
+              yarn add gsap
+            </code>
+            <code data-trim data-noescape>
+              npm install gsap
+            </code>
+            <br>
+            <code data-trim data-noescape>
+              import { gsap } from "gsap";
+            </code>
+            <br>
+            <a href="https://greensock.com/docs/v3/Installation" target="_blank">Installation Helper</a>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code data-trim data-noescape>
+              gsap.method('selector', { }, 'position')
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <img src="images/outro.png" />
+        </section>
       </div>
     </div>
 
