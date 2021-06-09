@@ -71,22 +71,59 @@
             <code data-trim data-noescape>
               yarn add gsap
             </code>
-            <code data-trim data-noescape>
-              npm install gsap
-            </code>
-            <br>
-            <code data-trim data-noescape>
-              import { gsap } from "gsap";
-            </code>
-            <br>
-            <a href="https://greensock.com/docs/v3/Installation" target="_blank">Installation Helper</a>
           </pre>
+          <pre>
+            <code data-trim data-noescape> npm install gsap </code>
+          </pre>
+          <pre>
+            <code data-trim data-noescape> import { gsap } from "gsap"; </code>
+          </pre>
+          <br />
+          <a href="https://greensock.com/docs/v3/Installation" target="_blank"
+            >Installation Helper</a
+          >
         </section>
 
         <section>
+          <h5>Basic GSAP Methods</h5>
+          <pre>
+              <code data-trim data-noescape>
+                gsap.method('selector', { }, 'position')
+              </code>
+            </pre>
+          <br />
+          <ul>
+            <li class="fragment">to()</li>
+            <li class="fragment">from()</li>
+            <li class="fragment">toFrom()</li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>Easing</h5>
+          <img width="500" src="images/easing.png" />
+          <br />
+          <a href="https://greensock.com/docs/v3/Eases" target="_blank">Easing Visualizer</a>
+        </section>
+
+        <section>
+          <h5>Timelines</h5>
           <pre>
             <code data-trim data-noescape>
-              gsap.method('selector', { }, 'position')
+              // WITHOUT Timelines (only using tweens with delays):
+              gsap.to("#id", {x: 100, duration: 1});
+              gsap.to("#id", {y: 50, duration: 1, delay: 1});
+              gsap.to("#id", {opacity: 0, duration: 1, delay: 2});
+            </code>
+          </pre>
+          vs
+          <pre>
+            <code data-trim data-noescape>
+              //WITH Timelines (cleaner, more versatile)
+              var tl = gsap.timeline({repeat: 2, repeatDelay: 1});
+              tl.to("#id", {x: 100, duration: 1}, "-=0.5");
+              tl.to("#id", {y: 50, duration: 1}), "-=0.5";
+              tl.to("#id", {opacity: 0, duration: 1}, "-=0.5");
             </code>
           </pre>
         </section>
