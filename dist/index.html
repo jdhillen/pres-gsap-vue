@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Animating Vue with GSAP - J.D. Hillen</title>
+
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./reveal.css" />
+    <link rel="stylesheet" href="./theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <img src="images/intro.png" />
+        </section>
+
+        <section>
+          <img src="images/conference.png" />
+        </section>
+
+        <section>
+          <h5>So Who Is This Guy?</h5>
+          <ul>
+            <li>From Kansas City</li>
+            <li>Software Engineer @ Garmin</li>
+            <li>Worked in Variety of Industries</li>
+            <li>Code 💻 Coffee ☕️ Metal 🤘</li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="images/rip_flash.png" />
+        </section>
+
+        <section>
+          <img src="images/steve_jobs.png" />
+        </section>
+
+        <section>
+          <h5>What is GSAP?</h5>
+          <p>
+            The GreenSock Animation Platform, or GSAP, is a powerful Javascript animation library
+            that helps developers build out engaging and performant animations.
+          </p>
+        </section>
+
+        <section>
+          <h5>What can GSAP Animate?</h5>
+          <ul>
+            <li>CSS Properties</li>
+            <li>SVG</li>
+            <li>Canvas</li>
+            <li>Variables</li>
+            <li>DOM objects</li>
+            <li>Three.js</li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="images/animate.jpg" />
+        </section>
+
+        <section>
+          <h5>Why GSAP over other animation libraries?</h5>
+          <ul>
+            <li>Platform agnostic</li>
+            <li>63kB minified bundle size</li>
+            <li>Zero dependencies</li>
+            <li>20x faster than jQuery</li>
+            <li>All modern browser support</li>
+            <li>
+              <a href="https://greensock.com/js/speed.html" target="_blank">Animation Library Speed Tests</a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>Requirements</h5>
+          <ul>
+            <li>NPM</li>
+            <li>CDN</li>
+            <li>Download ZIP</li>
+            <li>Basic Javascript Knowledge</li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>Installation</h5>
+          <pre>
+            <code data-trim data-noescape> npm install gsap </code>
+          </pre>
+          <pre>
+            <code data-trim data-noescape> import { gsap } from "gsap"; </code>
+          </pre>
+          <br />
+          <a href="https://greensock.com/docs/v3/Installation" target="_blank"
+            >Installation Helper</a
+          >
+        </section>
+
+        <section>
+          <h5>Basic GSAP Methods</h5>
+          <pre>
+            <code data-trim data-noescape>
+              gsap.method('selector', { params }, 'position')
+            </code>
+          </pre>
+          <ul>
+            <li>to()</li>
+            <li>from()</li>
+            <li>toFrom()</li>
+          </ul>
+        </section>
+
+        <section>
+          <h5>.to() Methods Example</h5>
+          <pre>
+            <code data-trim data-noescape>
+              let tween = gsap.to(".class", {
+                duration: 5,
+                x: 100,
+                ease: Power2.easeOut
+              });
+            </code>
+          </pre>
+          <pre>
+            <code data-trim data-noescape>
+              tween.pause();
+              tween.seek(2);
+              tween.progress(0.5);
+              tween.play();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h5>Easing</h5>
+          <img width="500" src="images/easing.png" />
+          <br />
+          <a href="https://greensock.com/docs/v3/Eases" target="_blank">Easing Visualizer</a>
+        </section>
+
+        <section>
+          <h5>Timelines</h5>
+          <pre>
+            <code data-trim data-noescape>
+              // WITHOUT Timelines (only using tweens with delays):
+              gsap.to("#id", { duration: 1, x: 100 });
+              gsap.to("#id", { duration: 1, y: 50, delay: 1 });
+              gsap.to("#id", { duration: 1, opacity: 0, delay: 2});
+            </code>
+          </pre>
+          vs
+          <pre>
+            <code data-trim data-noescape>
+              //WITH Timelines (cleaner, more versatile)
+              var tl = gsap.timeline({repeat: 2, repeatDelay: 1});
+                  tl.to("#id", { duration: 1, x: 100 }, "-=0.5");
+                  tl.to("#id", { duration: 1, y: 50 }), "-=0.5";
+                  tl.to("#id", { duration: 1, opacity: 0 }, "-=0.5");
+
+              tl.play();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h5>Utility Methods</h5>
+          <p>.random()</p>
+          <pre>
+            <code data-trim data-noescape>
+              // get a random number between -100 and 100 (no snapping)
+              gsap.utils.random(-100, 100);
+
+              // a random number between 0 and 500 that's snapped to the
+              // closest increment of 5
+              gsap.utils.random(0, 500, 5);
+
+              // get a reusable function that will randomly choose a value
+              // between -200 and 500, snapping to an increment of 10
+              var random = gsap.utils.random(-200, 500, 10, true);
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h5>Utility Methods</h5>
+          <p>.shuffle()</p>
+          <pre>
+            <code data-trim data-noescape>
+              var array = [1, 2, 3, 4, 5];
+              gsap.utils.shuffle(array); // returns [2, 5, 3, 1, 4]
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h5>Utility Methods</h5>
+          <p>.snap()</p>
+          <pre>
+            <code data-trim data-noescape>
+              // with a snapping increment of 10, snap the number 23.5
+              gsap.utils.snap(10, 23.5); // 20
+
+              // with a snapping increment of 2, snap the number 9.3
+              gsap.utils.snap(2, 9.3); // 10
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <iframe src="https://giphy.com/embed/g1G1FpVnYCTtaTXWWm" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/Ikbenbeveiligd-camera-code-warning-g1G1FpVnYCTtaTXWWm"></a></p>
+          <h5>Lets Look at Some Code</h5>
+        </section>
+
+        <section>
+          <h5>Resources</h5>
+          <ul>
+            <li>
+              <a href="https://greensock.com" target="_blank">www.greensock.com</a>
+            </li>
+            <li>
+              <a href="https://greensock.com/showcase/" target="_blank">Greensock Showcase</a>
+            </li>
+            <li>
+              <a href="https://www.creativecodingclub.com/" target="_blank">www.creativecodingclub.com</a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="images/outro.png" />
+        </section>
+      </div>
+    </div>
+
+    <script src="./reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
