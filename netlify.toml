@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "/dist"
-  base = "/"
-
-[[redirects]]
-  from = "/*"
-  to = "/indext.html"
-  status = 200
